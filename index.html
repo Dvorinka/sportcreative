@@ -155,23 +155,23 @@
                 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden">
-                    <button type="button" class="text-gray-700 hover:text-sport-purple focus:outline-none p-2">
-                        <ion-icon name="menu-outline" class="h-6 w-6"></ion-icon>
+                    <button type="button" class="mobile-menu-button text-gray-700 hover:text-sport-purple focus:outline-none p-2" aria-label="Menu" aria-expanded="false">
+                        <ion-icon name="menu-outline" class="h-8 w-8 transition-transform duration-300"></ion-icon>
                     </button>
                 </div>
             </div>
             
-            <!-- Mobile Navigation (hidden by default) -->
-            <div class="mobile-menu hidden w-full absolute top-full left-0">
-                <div class="pt-2 pb-4 space-y-1">
-                    <a href="#" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple">Domů</a>
-                    <a href="#" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple">Služby</a>
-                    <a href="#" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple">Portfolio</a>
-                    <a href="#" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple">O nás</a>
-                    <a href="kontakt.html" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple">Kontakt</a>
-                </div>
-                <div class="pt-2 pb-3 px-4">
-                    <a href="kontakt.html" class="block w-full text-center px-4 py-2 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-sport-purple hover:bg-sport-orange transition-all duration-300">
+            <!-- Mobile Navigation -->
+            <div class="mobile-menu w-full absolute top-full left-0 bg-white shadow-lg">
+                <nav class="px-2 pt-2 pb-4 space-y-1">
+                    <a href="#" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">Domů</a>
+                    <a href="#" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">Služby</a>
+                    <a href="#" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">Portfolio</a>
+                    <a href="#" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">O nás</a>
+                    <a href="kontakt.html" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">Kontakt</a>
+                </nav>
+                <div class="px-4 py-3 border-t border-gray-100">
+                    <a href="kontakt.html" class="block w-full text-center px-6 py-3 border border-transparent rounded-full text-base font-medium text-white bg-sport-purple hover:bg-sport-orange transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
                         Nezávazná konzultace
                     </a>
                 </div>
@@ -393,35 +393,9 @@
         
         <!-- Portfolio Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- SKUP Olomouc -->
-            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="video social">
-                <img src="https://www.claudeusercontent.com/api/placeholder/600/400" alt="SKUP Olomouc" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
-                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
-                    <h3 class="text-white text-xl font-bold">SKUP Olomouc</h3>
-                    <p class="text-gray-200">Komplexní správa sociálních sítí a tvorba videí</p>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Video</span>
-                        <span class="bg-sport-orange bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Zeusport -->
-            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="web social">
-                <img src="https://www.claudeusercontent.com/api/placeholder/600/400" alt="Zeusport" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
-                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
-                    <h3 class="text-white text-xl font-bold">Zeusport</h3>
-                    <p class="text-gray-200">Webové stránky a sociální sítě</p>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Webdesign</span>
-                        <span class="bg-sport-orange bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
-                    </div>
-                </div>
-            </div>
-            
             <!-- Winnersport -->
             <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="social sprava-webu">
-                <img src="https://www.claudeusercontent.com/api/placeholder/600/400" alt="Winnersport" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
+                <img src="assets/images/winnersport.png" alt="Winnersport" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
                 <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
                     <h3 class="text-white text-xl font-bold">Winnersport</h3>
                     <p class="text-gray-200">Správa sociálních sítí a e-shopu</p>
@@ -434,7 +408,7 @@
             
             <!-- Masita -->
             <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="social">
-                <img src="https://www.claudeusercontent.com/api/placeholder/600/400" alt="Masita" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
+                <img src="assets/images/masita.png" alt="Masita" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
                 <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
                     <h3 class="text-white text-xl font-bold">Masita</h3>
                     <p class="text-gray-200">Kompletní správa sociálních sítí</p>
@@ -443,37 +417,10 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Revvisport -->
-            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="web social">
-                <img src="https://www.claudeusercontent.com/api/placeholder/600/400" alt="Revvisport" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
-                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
-                    <h3 class="text-white text-xl font-bold">Revvisport</h3>
-                    <p class="text-gray-200">Webové stránky a sociální sítě</p>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Webdesign</span>
-                        <span class="bg-sport-orange bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- FK Kofola Krnov -->
-            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="sprava-webu social video">
-                <img src="https://www.claudeusercontent.com/api/placeholder/600/400" alt="FK Kofola Krnov" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
-                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
-                    <h3 class="text-white text-xl font-bold">FK Kofola Krnov</h3>
-                    <p class="text-gray-200">Komplexní digitální marketing</p>
-                    <div class="mt-4 flex flex-wrap gap-2">
-                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Správa webu</span>
-                        <span class="bg-sport-orange bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
-                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Video</span>
-                    </div>
-                </div>
-            </div>
-            
+
             <!-- FC Bizoni UH -->
             <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="social web foto video">
-                <img src="https://www.claudeusercontent.com/api/placeholder/600/400" alt="FC Bizoni UH" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
+                <img src="assets/images/bizoni.png" alt="FC Bizoni UH" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
                 <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
                     <h3 class="text-white text-xl font-bold">FC Bizoni UH</h3>
                     <p class="text-gray-200">Kompletní digitální marketing</p>
@@ -485,15 +432,81 @@
                     </div>
                 </div>
             </div>
+
+            <!-- FK Kofola Krnov -->
+            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="sprava-webu social video">
+                <img src="assets/images/krnov.png" alt="FK Kofola Krnov" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
+                    <h3 class="text-white text-xl font-bold">FK Kofola Krnov</h3>
+                    <p class="text-gray-200">Komplexní digitální marketing</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Správa webu</span>
+                        <span class="bg-sport-orange bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
+                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Video</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Penalty -->
+            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="social web foto video">
+                <img src="assets/images/penalty.png" alt="Penalty" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
+                    <h3 class="text-white text-xl font-bold">Penalty</h3>
+                    <p class="text-gray-200">Sociální sítě</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Zeusport -->
+            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="web social">
+                <img src="assets/images/zeus.png" alt="Zeusport" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
+                    <h3 class="text-white text-xl font-bold">Zeusport</h3>
+                    <p class="text-gray-200">Webové stránky a sociální sítě</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Webdesign</span>
+                        <span class="bg-sport-orange bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Revvisport -->
+            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="web social">
+                <img src="assets/images/revvi.png" alt="Revvisport" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
+                    <h3 class="text-white text-xl font-bold">Revvisport</h3>
+                    <p class="text-gray-200">Webové stránky a sociální sítě</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Webdesign</span>
+                        <span class="bg-sport-orange bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- SKUP Olomouc -->
+            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="video social">
+                <img src="assets/images/skup.png" alt="SKUP Olomouc" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
+                    <h3 class="text-white text-xl font-bold">SKUP Olomouc</h3>
+                    <p class="text-gray-200">Komplexní správa sociálních sítí a tvorba videí</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Video</span>
+                        <span class="bg-sport-orange bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <!-- Show More Button -->
+        <!-- Show More Button
         <div class="mt-12 text-center">
             <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-sport-purple text-base font-medium rounded-full text-sport-purple hover:bg-gray-50 transition duration-300">
                 Zobrazit další projekty
                 <ion-icon name="arrow-down-outline" class="ml-2"></ion-icon>
             </a>
-        </div>
+        </div> -->
     </div>
 </section>
 <!-- Call to Action Section -->
@@ -508,10 +521,10 @@
                 <a href="kontakt.html" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-full font-medium text-sport-purple bg-white hover:bg-gray-100 shadow-lg transition duration-300">
                     Nezávazná konzultace
                 </a>
-                <a href="#portfolio" class="inline-flex items-center justify-center px-6 py-3 border border-white rounded-full font-medium text-white hover:bg-white/10 transition duration-300">
+                <!-- <a href="#portfolio" class="inline-flex items-center justify-center px-6 py-3 border border-white rounded-full font-medium text-white hover:bg-white/10 transition duration-300">
                     Naše portfolio
                     <ion-icon name="arrow-forward-outline" class="ml-2"></ion-icon>
-                </a>
+                </a> -->
             </div>
         </div>
     </div>
@@ -560,7 +573,7 @@
                         <a href="#" class="text-gray-400 hover:text-white transition duration-150">Tvorba Reels</a>
                     </li>
                     <li>
-                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">Profi Fotografie</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">Profi Fotografie & Video</a>
                     </li>
                     <li>
                         <a href="#" class="text-gray-400 hover:text-white transition duration-150">Správa Webu</a>

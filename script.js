@@ -1,117 +1,136 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu functionality
-    const menuButton = document.querySelector('.md\\:hidden button');
+    const menuButton = document.querySelector('.mobile-menu-button');
     const mobileMenu = document.querySelector('.mobile-menu');
+    const menuIcon = menuButton?.querySelector('ion-icon');
     let isMenuOpen = false;
-    
-    if (menuButton && mobileMenu) {
-        // Initialize menu state
-        mobileMenu.classList.add('hidden');
-        mobileMenu.classList.remove('block', 'slide-in', 'slide-out');
-        
-        menuButton.addEventListener('click', function(e) {
-            e.stopPropagation();
-            isMenuOpen = !isMenuOpen;
-            
-            if (isMenuOpen) {
-                // Opening menu
-                mobileMenu.classList.remove('hidden', 'slide-out');
-                mobileMenu.classList.add('block', 'slide-in');
-                // Add click outside listener
-                document.addEventListener('click', closeMenuOnClickOutside);
-            } else {
-                // Closing menu
-                mobileMenu.classList.remove('slide-in');
-                mobileMenu.classList.add('slide-out');
-                // Remove click outside listener
-                document.removeEventListener('click', closeMenuOnClickOutside);
-                // Hide after animation
-                setTimeout(() => {
-                    if (!isMenuOpen) {  // Check again in case state changed
-                        mobileMenu.classList.add('hidden');
-                        mobileMenu.classList.remove('block');
-                    }
-                }, 300);
-            }
-        });
-        
-        // Close menu when clicking outside
-        function closeMenuOnClickOutside(e) {
-            if (!mobileMenu.contains(e.target) && !menuButton.contains(e.target)) {
-                isMenuOpen = false;
-                mobileMenu.classList.remove('slide-in');
-                mobileMenu.classList.add('slide-out');
-                document.removeEventListener('click', closeMenuOnClickOutside);
-                // Hide after animation
-                setTimeout(() => {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenu.classList.remove('block');
-                }, 300);
-            }
+
+    // Function to close the menu
+    function closeMenu() {
+        isMenuOpen = false;
+        if (mobileMenu) {
+            mobileMenu.classList.remove('active');
+            mobileMenu.style.opacity = '0';
+            mobileMenu.style.visibility = 'hidden';
+        }
+        if (menuIcon) {
+            menuIcon.setAttribute('name', 'menu-outline');
+        }
+        document.removeEventListener('click', handleClickOutside);
+    }
+
+    // Function to open the menu
+    function openMenu() {
+        isMenuOpen = true;
+        if (mobileMenu) {
+            mobileMenu.classList.add('active');
+            mobileMenu.style.opacity = '1';
+            mobileMenu.style.visibility = 'visible';
+        }
+        if (menuIcon) {
+            menuIcon.setAttribute('name', 'close-outline');
+        }
+        setTimeout(() => {
+            document.addEventListener('click', handleClickOutside);
+        }, 10);
+    }
+
+    // Handle clicks outside the menu
+    function handleClickOutside(e) {
+        if (!menuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+            closeMenu();
         }
     }
 
-    // Get all filter buttons and portfolio items
+    // Toggle menu on button click
+    if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (isMenuOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        // Close menu when clicking on menu links
+        const menuLinks = mobileMenu.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMenu();
+            });
+        });
+    }
+
+
+    // Close menu when window is resized to desktop
+    function handleResize() {
+        if (window.innerWidth >= 768) {
+            closeMenu();
+        }
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    // Portfolio filtering functionality - only run if elements exist
     const filterButtons = document.querySelectorAll('.portfolio-filter-btn');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
-    // Add click event to each filter button
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => {
-                btn.classList.remove('bg-sport-purple', 'text-white');
-                btn.classList.add('bg-white', 'text-gray-700', 'hover:bg-gray-100');
+
+    // Only run portfolio filtering if we have both buttons and items
+    if (filterButtons.length > 0 && portfolioItems.length > 0) {
+        // Filter functionality
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('bg-sport-purple', 'text-white'));
+                // Add active class to clicked button
+                this.classList.add('bg-sport-purple', 'text-white');
+                
+                const filterValue = this.getAttribute('data-filter');
+                
+                // Filter portfolio items
+                portfolioItems.forEach(item => {
+                    const categories = item.getAttribute('data-categories').split(' ');
+                    
+                    if (filterValue === 'all' || categories.includes(filterValue)) {
+                        item.style.display = 'block';
+                        // Add animation class
+                        item.classList.add('animate-fade-in');
+                        setTimeout(() => {
+                            item.classList.remove('animate-fade-in');
+                        }, 500);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Initialize portfolio with "all" selected
+        const allFilterButton = document.querySelector('[data-filter="all"]');
+        if (allFilterButton) {
+            allFilterButton.click();
+        }
+        
+        // Portfolio item hover effects
+        portfolioItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                const overlay = this.querySelector('.portfolio-overlay');
+                if (overlay) {
+                    overlay.classList.remove('opacity-0');
+                    overlay.classList.add('opacity-100');
+                }
             });
             
-            // Add active class to clicked button
-            this.classList.remove('bg-white', 'text-gray-700', 'hover:bg-gray-100');
-            this.classList.add('bg-sport-purple', 'text-white');
-            
-            // Get selected filter category
-            const filterValue = this.getAttribute('data-filter');
-            
-            // Show/hide portfolio items based on filter
-            portfolioItems.forEach(item => {
-                // If "all" is selected or item has the selected category
-                if (filterValue === 'all' || item.getAttribute('data-categories').includes(filterValue)) {
-                    item.style.display = 'block';
-                    // Add animation class
-                    item.classList.add('animate-fade-in');
-                    setTimeout(() => {
-                        item.classList.remove('animate-fade-in');
-                    }, 500);
-                } else {
-                    item.style.display = 'none';
+            item.addEventListener('mouseleave', function() {
+                const overlay = this.querySelector('.portfolio-overlay');
+                if (overlay) {
+                    overlay.classList.remove('opacity-100');
+                    overlay.classList.add('opacity-0');
                 }
             });
         });
-    });
-    
-    // Initialize portfolio with "all" selected if filter buttons exist
-    const allFilterButton = document.querySelector('[data-filter="all"]');
-    if (allFilterButton) {
-        allFilterButton.click();
     }
-    
-    // Additional functionality: Portfolio item hover effects
-    portfolioItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
-            const overlay = this.querySelector('.portfolio-overlay');
-            if (overlay) {
-                overlay.classList.remove('opacity-0');
-                overlay.classList.add('opacity-100');
-            }
-        });
-        
-        item.addEventListener('mouseleave', function() {
-            const overlay = this.querySelector('.portfolio-overlay');
-            if (overlay) {
-                overlay.classList.remove('opacity-100');
-                overlay.classList.add('opacity-0');
-            }
-        });
-    });
 
     // Enhanced button hover effects - limited to actual buttons
     const buttons = document.querySelectorAll('button:not(.portfolio-filter-btn), .btn');
@@ -154,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    backToTop.addEventListener('click', function() {
+    backToTop.addEventListener('click', function() {    
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
