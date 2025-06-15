@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportCreative - Digitální Marketing pro Sport</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/esm/ionicons.min.js"></script>
+    <!-- Custom JS will be included here -->
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- Add Montserrat font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sport-purple': '#6c38d9',
+                        'sport-orange': '#ff9933',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Add to your Tailwind config -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'sport-purple': {
+              DEFAULT: '#6c38d9',
+              light: '#8a5ad1',
+              dark: '#5a2cbf'
+            },
+            'sport-orange': {
+              DEFAULT: '#ff9933',
+              light: '#ffb366',
+              dark: '#e6892d'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' }
+            },
+            glow: {
+              'from': { boxShadow: '0 0 5px rgba(255, 153, 51, 0.5)' },
+              'to': { boxShadow: '0 0 15px rgba(255, 153, 51, 0.9)' }
+            }
+          },
+          borderRadius: {
+            '4xl': '2rem',
+          },
+          spacing: {
+            '72': '18rem',
+            '84': '21rem',
+          }
+        }
+      }
+    }
+    </script>
+    
+    <style>
+    /* Custom utility classes */
+    .custom-gradient {
+      background: linear-gradient(135deg, #6c38d9 0%, #ff9933 100%);
+    }
+    
+    .neon-border {
+      box-shadow: 0 0 5px rgba(108, 56, 217, 0.3), 
+                  0 0 15px rgba(255, 153, 51, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .service-icon {
+      transition: transform 0.3s ease;
+    }
+    .service-icon:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+      transition: all 0.4s ease;
+    }
+    
+    /* Scrollbar customization */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #6c38d9;
+      border-radius: 4px;
+    }
+    
+    /* Glassmorphism effect */
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Neon glow effect */
+    .neon-glow {
+      text-shadow: 0 0 5px rgba(255, 153, 51, 0.7),
+                   0 0 10px rgba(255, 153, 51, 0.5);
+      transition: all 0.3s ease;
+    }
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="logo">
+                        <img src="header-logo.png" alt="SportCreative" class="logo">
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">Domů</a>
+                    <a href="#" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">Služby</a>
+                    <a href="#" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">Portfolio</a>
+                    <a href="#" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">O nás</a>
+                    <a href="#" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">Kontakt</a>
+                </nav>
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="#" class="bg-sport-purple text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition duration-300">
+                        Nezávazná konzultace
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-gray-700 hover:text-sport-purple focus:outline-none p-2">
+                        <ion-icon name="menu-outline" class="h-6 w-6"></ion-icon>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation (hidden by default) -->
+            <div class="mobile-menu hidden w-full absolute top-full left-0">
+                <div class="pt-2 pb-4 space-y-1">
+                    <a href="#" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple">Domů</a>
+                    <a href="#" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple">Služby</a>
+                    <a href="#" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple">Portfolio</a>
+                    <a href="#" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple">O nás</a>
+                    <a href="#" class="block pl-3 pr-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple">Kontakt</a>
+                </div>
+                <div class="pt-2 pb-3 px-4">
+                    <a href="#" class="block w-full text-center px-4 py-2 border border-transparent rounded-full shadow-sm text-base font-medium text-white bg-sport-purple hover:bg-sport-orange transition-all duration-300">
+                        Nezávazná konzultace
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-white py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+                        Digitální marketing <span class="text-sport-purple">pro sportovní</span> <span class="text-sport-orange">týmy a společnosti</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8">
+                        Pomáháme sportovním organizacím růst v digitálním světě pomocí profesionálního obsahu, kreativních strategií a působivé prezentace.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-sport-purple hover:shadow-lg transition duration-300">
+                            Zjistit více
+                        </a>
+                        <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-full shadow-sm text-gray-700 bg-white hover:bg-gray-50 transition duration-300">
+                            Naše portfolio
+                            <ion-icon name="arrow-forward-outline" class="ml-2"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="assets/images/sportcreative.png" alt="Sportovní marketing" class="rounded-lg shadow-xl" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900">Naše služby</h2>
+            <div class="mt-2 h-1 w-24 bg-sport-orange mx-auto"></div>
+            <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+                Kompletní digitální řešení pro váš sportovní tým nebo společnost
+            </p>
+        </div>
+        
+        <!-- Services Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Service Card 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                <div class="h-48 bg-gray-200 relative overflow-hidden">
+                    <img src="assets/images/video.png" alt="Video editing" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-cover" style="background-image: url('assets/images/overlay.png');"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <ion-icon name="videocam-outline" class="text-sport-purple text-2xl"></ion-icon>
+                        <h3 class="ml-2 text-xl font-semibold text-gray-900">Video Editing</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Profesionální střih videí ze sportovních utkání, tréninků a akcí s využitím DaVinci Resolve. Vytváříme dynamické a poutavé materiály pro vaši prezentaci.
+                    </p>
+                    <a href="#" class="mt-4 inline-flex items-center text-sport-purple hover:text-sport-orange font-medium">
+                        Více informací
+                        <ion-icon name="arrow-forward-outline" class="ml-1"></ion-icon>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Service Card 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                <div class="h-48 bg-gray-200 relative overflow-hidden">
+                    <img src="assets/images/socials.png" alt="Social media management" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-cover" style="background-image: url('assets/images/overlay.png');"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <ion-icon name="share-social-outline" class="text-sport-purple text-2xl"></ion-icon>
+                        <h3 class="ml-2 text-xl font-semibold text-gray-900">Sociální sítě</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Kompletní správa profilů na Instagramu a Facebooku, tvorba engagujícího obsahu, plánování příspěvků a analytika. Zvýšíme povědomí o vašem týmu.
+                    </p>
+                    <a href="#" class="mt-4 inline-flex items-center text-sport-purple hover:text-sport-orange font-medium">
+                        Více informací
+                        <ion-icon name="arrow-forward-outline" class="ml-1"></ion-icon>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Service Card 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                <div class="h-48 bg-gray-200 relative overflow-hidden">
+                    <img src="assets/images/reels.png" alt="Reels creation" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-cover" style="background-image: url('assets/images/overlay.png');"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <ion-icon name="film-outline" class="text-sport-purple text-2xl"></ion-icon>
+                        <h3 class="ml-2 text-xl font-semibold text-gray-900">Tvorba Reels</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Atraktivní krátká videa pro Instagram a Facebook Reels, která zachytí klíčové momenty a zvýší váš dosah. Virální potenciál pro oslovení nových fanoušků.
+                    </p>
+                    <a href="#" class="mt-4 inline-flex items-center text-sport-purple hover:text-sport-orange font-medium">
+                        Více informací
+                        <ion-icon name="arrow-forward-outline" class="ml-1"></ion-icon>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Service Card 4 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                <div class="h-48 bg-gray-200 relative overflow-hidden">
+                    <img src="assets/images/photo.png" alt="Professional photography" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-cover" style="background-image: url('assets/images/overlay.png');"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <ion-icon name="camera-outline" class="text-sport-purple text-2xl"></ion-icon>
+                        <h3 class="ml-2 text-xl font-semibold text-gray-900">Profi Fotografie</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Profesionální focení sportovních zápasů, akcí a týmových portrétů. Zachytíme emoce, dynamiku a jedinečné okamžiky vašeho sportovního příběhu.
+                    </p>
+                    <a href="#" class="mt-4 inline-flex items-center text-sport-purple hover:text-sport-orange font-medium">
+                        Více informací
+                        <ion-icon name="arrow-forward-outline" class="ml-1"></ion-icon>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Service Card 5 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                <div class="h-48 bg-gray-200 relative overflow-hidden">
+                    <img src="assets/images/web.png" alt="Website management" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-cover" style="background-image: url('assets/images/overlay.png');"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <ion-icon name="globe-outline" class="text-sport-purple text-2xl"></ion-icon>
+                        <h3 class="ml-2 text-xl font-semibold text-gray-900">Správa Webu</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Komplexní péče o váš web - od aktualizace obsahu přes technickou správu až po SEO optimalizaci. Zajistíme, aby váš online domov fungoval perfektně.
+                    </p>
+                    <a href="#" class="mt-4 inline-flex items-center text-sport-purple hover:text-sport-orange font-medium">
+                        Více informací
+                        <ion-icon name="arrow-forward-outline" class="ml-1"></ion-icon>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Service Card 6 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                <div class="h-48 bg-gray-200 relative overflow-hidden">
+                    <img src="assets/images/design.png" alt="Graphic design" class="w-full h-full object-cover" />
+                    <div class="absolute inset-0 bg-cover" style="background-image: url('assets/images/overlay.png');"></div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <ion-icon name="brush-outline" class="text-sport-purple text-2xl"></ion-icon>
+                        <h3 class="ml-2 text-xl font-semibold text-gray-900">Grafický Design</h3>
+                    </div>
+                    <p class="text-gray-600">
+                        Tvorba vizuální identity, grafických prvků pro sociální sítě, plakátů a propagačních materiálů v Adobe Photoshop. Design, který podtrhne vaši značku.
+                    </p>
+                    <a href="#" class="mt-4 inline-flex items-center text-sport-purple hover:text-sport-orange font-medium">
+                        Více informací
+                        <ion-icon name="arrow-forward-outline" class="ml-1"></ion-icon>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA -->
+        <div class="mt-16 text-center">
+            <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-sport-purple hover:shadow-lg transition duration-300">
+                Všechny služby
+                <ion-icon name="grid-outline" class="ml-2"></ion-icon>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900">Naše portfolio</h2>
+            <div class="mt-2 h-1 w-24 bg-sport-orange mx-auto"></div>
+            <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+                Podívejte se na naše nejlepší projekty pro sportovní kluby a organizace
+            </p>
+        </div>
+        
+        <!-- Portfolio Filter -->
+        <div class="flex flex-wrap justify-center mb-8 space-x-2">
+            <button class="portfolio-filter-btn mb-2 px-4 py-2 bg-sport-purple text-white rounded-full text-sm font-medium" data-filter="all">
+                Všechny projekty
+            </button>
+            <button class="portfolio-filter-btn mb-2 px-4 py-2 bg-white text-gray-700 hover:bg-gray-100 rounded-full text-sm font-medium" data-filter="video">
+                Video
+            </button>
+            <button class="portfolio-filter-btn mb-2 px-4 py-2 bg-white text-gray-700 hover:bg-gray-100 rounded-full text-sm font-medium" data-filter="foto">
+                Fotografie
+            </button>
+            <button class="portfolio-filter-btn mb-2 px-4 py-2 bg-white text-gray-700 hover:bg-gray-100 rounded-full text-sm font-medium" data-filter="social">
+                Sociální sítě
+            </button>
+            <button class="portfolio-filter-btn mb-2 px-4 py-2 bg-white text-gray-700 hover:bg-gray-100 rounded-full text-sm font-medium" data-filter="web">
+                Webdesign
+            </button>
+            <button class="portfolio-filter-btn mb-2 px-4 py-2 bg-white text-gray-700 hover:bg-gray-100 rounded-full text-sm font-medium" data-filter="sprava-webu">
+                Správa webu
+            </button>
+        </div>
+        
+        <!-- Portfolio Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- SKUP Olomouc -->
+            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="video social">
+                <img src="https://www.claudeusercontent.com/api/placeholder/600/400" alt="SKUP Olomouc" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
+                    <h3 class="text-white text-xl font-bold">SKUP Olomouc</h3>
+                    <p class="text-gray-200">Komplexní správa sociálních sítí a tvorba videí</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Video</span>
+                        <span class="bg-sport-orange bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Zeusport -->
+            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="web social">
+                <img src="https://www.claudeusercontent.com/api/placeholder/600/400" alt="Zeusport" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
+                    <h3 class="text-white text-xl font-bold">Zeusport</h3>
+                    <p class="text-gray-200">Webové stránky a sociální sítě</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Webdesign</span>
+                        <span class="bg-sport-orange bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Winnersport -->
+            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="social sprava-webu">
+                <img src="https://www.claudeusercontent.com/api/placeholder/600/400" alt="Winnersport" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
+                    <h3 class="text-white text-xl font-bold">Winnersport</h3>
+                    <p class="text-gray-200">Správa sociálních sítí a e-shopu</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
+                        <span class="bg-sport-orange bg-opacity-80 text-white text-xs px-2 py-1 rounded">Správa e-shopu</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Masita -->
+            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="social">
+                <img src="https://www.claudeusercontent.com/api/placeholder/600/400" alt="Masita" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
+                    <h3 class="text-white text-xl font-bold">Masita</h3>
+                    <p class="text-gray-200">Kompletní správa sociálních sítí</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Revvisport -->
+            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="web social">
+                <img src="https://www.claudeusercontent.com/api/placeholder/600/400" alt="Revvisport" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
+                    <h3 class="text-white text-xl font-bold">Revvisport</h3>
+                    <p class="text-gray-200">Webové stránky a sociální sítě</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Webdesign</span>
+                        <span class="bg-sport-orange bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FK Kofola Krnov -->
+            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="sprava-webu social video">
+                <img src="https://www.claudeusercontent.com/api/placeholder/600/400" alt="FK Kofola Krnov" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
+                    <h3 class="text-white text-xl font-bold">FK Kofola Krnov</h3>
+                    <p class="text-gray-200">Komplexní digitální marketing</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Správa webu</span>
+                        <span class="bg-sport-orange bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
+                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Video</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FC Bizoni UH -->
+            <div class="portfolio-item group relative overflow-hidden rounded-lg shadow-md transition duration-300 hover:shadow-xl" data-categories="social web foto video">
+                <img src="https://www.claudeusercontent.com/api/placeholder/600/400" alt="FC Bizoni UH" class="w-full h-64 object-cover transition duration-300 transform group-hover:scale-105" />
+                <div class="portfolio-overlay absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition duration-300 flex flex-col justify-end p-6">
+                    <h3 class="text-white text-xl font-bold">FC Bizoni UH</h3>
+                    <p class="text-gray-200">Kompletní digitální marketing</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Sociální sítě</span>
+                        <span class="bg-sport-orange bg-opacity-80 text-white text-xs px-2 py-1 rounded">Webdesign</span>
+                        <span class="bg-sport-purple bg-opacity-80 text-white text-xs px-2 py-1 rounded">Fotografie</span>
+                        <span class="bg-sport-orange bg-opacity-80 text-white text-xs px-2 py-1 rounded">Video</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Show More Button -->
+        <div class="mt-12 text-center">
+            <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-sport-purple text-base font-medium rounded-full text-sport-purple hover:bg-gray-50 transition duration-300">
+                Zobrazit další projekty
+                <ion-icon name="arrow-down-outline" class="ml-2"></ion-icon>
+            </a>
+        </div>
+    </div>
+</section>
+<!-- Call to Action Section -->
+<section class="py-16 bg-sport-purple">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Připraveni posunout váš sportovní marketing na další úroveň?</h2>
+            <p class="text-xl text-white/80 mb-8">
+                Kontaktujte nás ještě dnes a zjistěte, jak můžeme pomoci vašemu týmu nebo sportovní organizaci zazářit v digitálním světě.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-full font-medium text-sport-purple bg-white hover:bg-gray-100 shadow-lg transition duration-300">
+                    Nezávazná konzultace
+                </a>
+                <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-white rounded-full font-medium text-white hover:bg-white/10 transition duration-300">
+                    Naše portfolio
+                    <ion-icon name="arrow-forward-outline" class="ml-2"></ion-icon>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white">
+    <!-- Main Footer -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Column 1: Logo & About -->
+            <div>
+                <div class="text-2xl font-bold mb-4">
+                    <span class="text-sport-purple">Sport</span><span class="text-sport-orange">Creative</span>
+                </div>
+                <p class="text-gray-400 mb-4">
+                    Digitální marketingová agentura specializovaná na sportovní týmy a organizace. Tvoříme obsah, který inspiruje a spojuje fanoušky.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-150">
+                        <ion-icon name="logo-facebook" class="text-xl"></ion-icon>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-150">
+                        <ion-icon name="logo-instagram" class="text-xl"></ion-icon>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-150">
+                        <ion-icon name="logo-twitter" class="text-xl"></ion-icon>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition duration-150">
+                        <ion-icon name="logo-linkedin" class="text-xl"></ion-icon>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Column 2: Services -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-white">Služby</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">Video Editing</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">Sociální sítě</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">Tvorba Reels</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">Profi Fotografie</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">Správa Webu</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">Grafický Design</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Column 3: Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-white">Rychlé odkazy</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">Domů</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">O nás</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">Kariéra</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-150">Kontakt</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Column 4: Contact Info -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-white">Kontakt</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <ion-icon name="location-outline" class="text-sport-orange text-xl mt-1 mr-2"></ion-icon>
+                        <span class="text-gray-400">Sportovní 123, 150 00 Praha 5</span>
+                    </li>
+                    <li class="flex items-center">
+                        <ion-icon name="call-outline" class="text-sport-orange text-xl mr-2"></ion-icon>
+                        <span class="text-gray-400">+420 123 456 789</span>
+                    </li>
+                    <li class="flex items-center">
+                        <ion-icon name="mail-outline" class="text-sport-orange text-xl mr-2"></ion-icon>
+                        <span class="text-gray-400">info@sportcreative.cz</span>
+                    </li>
+                    <li class="flex items-center">
+                        <ion-icon name="time-outline" class="text-sport-orange text-xl mr-2"></ion-icon>
+                        <span class="text-gray-400">Po-Pá: 9:00 - 17:00</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Copyright -->
+    <div class="border-t border-gray-800 py-6">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                &copy; 2025 SportCreative. Všechna práva vyhrazena.
+            </p>
+            <div class="flex space-x-4 text-sm text-gray-400">
+                <a href="#" class="hover:text-white transition duration-150">Podmínky použití</a>
+                <a href="#" class="hover:text-white transition duration-150">Ochrana soukromí</a>
+                <a href="#" class="hover:text-white transition duration-150">Cookies</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="fixed bottom-6 right-6 bg-sport-orange rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-sport-purple hover:scale-110" id="backToTop">
+    <ion-icon name="arrow-up-outline"></ion-icon>
+</button>
+
+<!-- Ionicons Script - Placed at the end for performance -->
+<script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
+
+<!-- Simple JavaScript for Back to Top functionality -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+<script src="script.js" defer></script>
+</body>
+</html>
