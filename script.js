@@ -88,8 +88,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Initialize portfolio with "all" selected
-    document.querySelector('[data-filter="all"]').click();
+    // Initialize portfolio with "all" selected if filter buttons exist
+    const allFilterButton = document.querySelector('[data-filter="all"]');
+    if (allFilterButton) {
+        allFilterButton.click();
+    }
     
     // Additional functionality: Portfolio item hover effects
     portfolioItems.forEach(item => {
