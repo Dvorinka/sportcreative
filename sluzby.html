@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Služby | SportCreative</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/esm/ionicons.min.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sport-purple': '#6c38d9',
+                        'sport-orange': '#ff9933',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+    </style>
+</head>
+<body class="font-sans antialiased">
+    <!-- Header Section (same as index.html) -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="index.html" class="logo">
+                        <img src="header-logo.png" alt="SportCreative" class="logo">
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">Domů</a>
+                    <a href="sluzby.html" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">Služby</a>
+                    <a href="portfolio.html" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">Portfolio</a>
+                    <a href="o-nas.html" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">O nás</a>
+                    <a href="kontakt.html" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">Kontakt</a>
+                </nav>
+                <div class="hidden md:block">
+                    <a href="kontakt.html" class="bg-sport-purple text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition duration-300">
+                        Nezávazná konzultace
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button type="button" class="mobile-menu-button text-gray-700 hover:text-sport-purple focus:outline-none p-2" aria-label="Menu" aria-expanded="false">
+                        <ion-icon name="menu-outline" class="h-8 w-8 transition-transform duration-300"></ion-icon>
+                    </button>
+                </div>
+            </div>
+            <div class="mobile-menu w-full absolute top-full left-0 bg-white shadow-lg">
+                <nav class="px-2 pt-2 pb-4 space-y-1">
+                    <a href="index.html" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">Domů</a>
+                    <a href="sluzby.html" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">Služby</a>
+                    <a href="portfolio.html" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">Portfolio</a>
+                    <a href="o-nas.html" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">O nás</a>
+                    <a href="kontakt.html" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">Kontakt</a>
+                </nav>
+                <div class="px-4 py-3 border-t border-gray-100">
+                    <a href="kontakt.html" class="block w-full text-center px-6 py-3 border border-transparent rounded-full text-base font-medium text-white bg-sport-purple hover:bg-sport-orange transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+                        Nezávazná konzultace
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Services Detail Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900">Naše služby</h2>
+                <div class="mt-2 h-1 w-24 bg-sport-orange mx-auto"></div>
+                <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+                    Kompletní digitální řešení pro váš sportovní tým nebo společnost
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div id="video-editing" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="h-48 bg-gray-200 relative overflow-hidden">
+                        <img src="assets/images/video.png" alt="Video editing" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-cover" style="background-image: url('assets/images/overlay.png');"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <ion-icon name="videocam-outline" class="text-sport-purple text-2xl"></ion-icon>
+                            <h3 class="ml-2 text-xl font-semibold text-gray-900">Video Editing</h3>
+                        </div>
+                        <p class="text-gray-600 mb-2">
+                            Profesionální střih videí ze sportovních utkání, tréninků a akcí s využitím DaVinci Resolve. Vytváříme dynamické a poutavé materiály pro vaši prezentaci.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-500 text-sm mb-2">
+                            <li>Střih a postprodukce sportovních videí</li>
+                            <li>Přidání grafiky, titulků a efektů</li>
+                            <li>Optimalizace pro sociální sítě a web</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div id="socialni-site" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="h-48 bg-gray-200 relative overflow-hidden">
+                        <img src="assets/images/socials.png" alt="Social media management" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-cover" style="background-image: url('assets/images/overlay.png');"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <ion-icon name="share-social-outline" class="text-sport-purple text-2xl"></ion-icon>
+                            <h3 class="ml-2 text-xl font-semibold text-gray-900">Sociální sítě</h3>
+                        </div>
+                        <p class="text-gray-600 mb-2">
+                            Kompletní správa profilů na Instagramu a Facebooku, tvorba engagujícího obsahu, plánování příspěvků a analytika. Zvýšíme povědomí o vašem týmu.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-500 text-sm mb-2">
+                            <li>Strategie a plánování obsahu</li>
+                            <li>Správa reklamních kampaní</li>
+                            <li>Analýza a reporting výkonu</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div id="tvorba-reels" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="h-48 bg-gray-200 relative overflow-hidden">
+                        <img src="assets/images/reels.png" alt="Reels creation" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-cover" style="background-image: url('assets/images/overlay.png');"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <ion-icon name="film-outline" class="text-sport-purple text-2xl"></ion-icon>
+                            <h3 class="ml-2 text-xl font-semibold text-gray-900">Tvorba Reels</h3>
+                        </div>
+                        <p class="text-gray-600 mb-2">
+                            Atraktivní krátká videa pro Instagram a Facebook Reels, která zachytí klíčové momenty a zvýší váš dosah. Virální potenciál pro oslovení nových fanoušků.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-500 text-sm mb-2">
+                            <li>Kreativní scénáře a střih</li>
+                            <li>Optimalizace pro maximální dosah</li>
+                            <li>Analýza úspěšnosti</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Service 4 -->
+                <div id="fotografie-video" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="h-48 bg-gray-200 relative overflow-hidden">
+                        <img src="assets/images/photo.png" alt="Professional photography" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-cover" style="background-image: url('assets/images/overlay.png');"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <ion-icon name="camera-outline" class="text-sport-purple text-2xl"></ion-icon>
+                            <h3 class="ml-2 text-xl font-semibold text-gray-900">Profesionální fotografie a videa</h3>
+                        </div>
+                        <p class="text-gray-600 mb-2">
+                            Profesionální fotografie a videa z vašich sportovních akcí. Od působivých momentek z utkání přes týmové fotografie až po propagační videa.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-500 text-sm mb-2">
+                            <li>Reportážní a akční fotografie</li>
+                            <li>Týmové a portrétní focení</li>
+                            <li>Propagační videa a spoty</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Service 5 -->
+                <div id="sprava-webu" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="h-48 bg-gray-200 relative overflow-hidden">
+                        <img src="assets/images/web.png" alt="Website management" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-cover" style="background-image: url('assets/images/overlay.png');"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <ion-icon name="globe-outline" class="text-sport-purple text-2xl"></ion-icon>
+                            <h3 class="ml-2 text-xl font-semibold text-gray-900">Správa Webu</h3>
+                        </div>
+                        <p class="text-gray-600 mb-2">
+                            Komplexní péče o váš web - od aktualizace obsahu přes technickou správu až po SEO optimalizaci. Zajistíme, aby váš online domov fungoval perfektně.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-500 text-sm mb-2">
+                            <li>Aktualizace a správa obsahu</li>
+                            <li>SEO optimalizace</li>
+                            <li>Technická podpora a údržba</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Service 6 -->
+                <div id="graficky-design" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="h-48 bg-gray-200 relative overflow-hidden">
+                        <img src="assets/images/design.png" alt="Graphic design" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-cover" style="background-image: url('assets/images/overlay.png');"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <ion-icon name="brush-outline" class="text-sport-purple text-2xl"></ion-icon>
+                            <h3 class="ml-2 text-xl font-semibold text-gray-900">Grafický Design</h3>
+                        </div>
+                        <p class="text-gray-600 mb-2">
+                            Tvorba vizuální identity, grafických prvků pro sociální sítě, plakátů a propagačních materiálů v Adobe Photoshop. Design, který podtrhne vaši značku.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-500 text-sm mb-2">
+                            <li>Logo, bannery, plakáty</li>
+                            <li>Grafika pro sociální sítě</li>
+                            <li>Branding a vizuální identita</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Service 7 -->
+                <div id="marketing" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+                    <div class="h-48 bg-gray-200 relative overflow-hidden">
+                        <img src="assets/images/marketing.png" alt="Digitální marketing" class="w-full h-full object-cover" />
+                        <div class="absolute inset-0 bg-cover" style="background-image: url('assets/images/overlay.png');"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <ion-icon name="megaphone-outline" class="text-sport-purple text-2xl"></ion-icon>
+                            <h3 class="ml-2 text-xl font-semibold text-gray-900">Digitální marketing</h3>
+                        </div>
+                        <p class="text-gray-600 mb-2">
+                            Komplexní digitální marketingové strategie na míru pro sportovní týmy a organizace.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-500 text-sm mb-2">
+                            <li>Plánování a realizace kampaní</li>
+                            <li>Analýza trhu a konkurence</li>
+                            <li>Online reklama a PPC</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer (same as index.html) -->
+    <footer class="bg-gray-900 text-white">
+        <!-- ...existing code from index.html footer... -->
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-2xl font-bold mb-4">
+                        <span class="text-sport-purple">Sport</span><span class="text-sport-orange">Creative</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Digitální marketingová agentura specializovaná na sportovní týmy a organizace. Tvoříme obsah, který inspiruje a spojuje fanoušky.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/sportcreative_cz/" target="_blank" class="text-gray-400 hover:text-white transition duration-150">
+                            <ion-icon name="logo-instagram" class="text-xl"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Služby</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#video-editing" class="text-gray-400 hover:text-white transition duration-150">Video Editing</a></li>
+                        <li><a href="#socialni-site" class="text-gray-400 hover:text-white transition duration-150">Sociální sítě</a></li>
+                        <li><a href="#tvorba-reels" class="text-gray-400 hover:text-white transition duration-150">Tvorba Reels</a></li>
+                        <li><a href="#fotografie-video" class="text-gray-400 hover:text-white transition duration-150">Profi Fotografie & Video</a></li>
+                        <li><a href="#sprava-webu" class="text-gray-400 hover:text-white transition duration-150">Správa Webu</a></li>
+                        <li><a href="#graficky-design" class="text-gray-400 hover:text-white transition duration-150">Grafický Design</a></li>
+                        <li><a href="#marketing" class="text-gray-400 hover:text-white transition duration-150">Digitální marketing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Rychlé odkazy</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-150">Domů</a></li>
+                        <li><a href="o-nas.html" class="text-gray-400 hover:text-white transition duration-150">O nás</a></li>
+                        <li><a href="portfolio.html" class="text-gray-400 hover:text-white transition duration-150">Portfolio</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-150">Kariéra</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-150">Blog</a></li>
+                        <li><a href="kontakt.html" class="text-gray-400 hover:text-white transition duration-150">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4 text-white">Kontakt</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <ion-icon name="call-outline" class="text-sport-orange text-xl mt-1 mr-2"></ion-icon>
+                            <div>
+                                <div class="text-gray-400">+420 775 247 633</div>
+                                <div class="text-gray-400">+420 778 701 838</div>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <ion-icon name="mail-outline" class="text-sport-orange text-xl mr-2 mt-1"></ion-icon>
+                            <div>
+                                <div class="text-gray-400 cursor-pointer hover:text-white transition-colors" onclick="copyEmailAndRedirect('info@sportcreative.eu')">info@sportcreative.eu</div>
+                                <div class="text-sm text-sport-orange">Odpovídáme do 24 hodin</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <ion-icon name="time-outline" class="text-sport-orange text-xl mt-1 mr-2"></ion-icon>
+                            <span class="text-gray-400">Po-Ne: 8:00 - 20:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 py-6">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; 2025 SportCreative. Všechna práva vyhrazena.
+                </p>
+                <div class="flex space-x-4 text-sm text-gray-400">
+                    <a href="#" class="hover:text-white transition duration-150">Podmínky použití</a>
+                    <a href="#" class="hover:text-white transition duration-150">Ochrana soukromí</a>
+                    <a href="#" class="hover:text-white transition duration-150">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <button class="fixed bottom-6 right-6 bg-sport-orange rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-sport-purple hover:scale-110" id="backToTop">
+        <ion-icon name="arrow-up-outline"></ion-icon>
+    </button>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
+    <script>
+        function copyEmailAndRedirect(email) {
+            navigator.clipboard.writeText(email).then(function() {
+                window.location.href = 'kontakt.html';
+            }).catch(function(err) {
+                window.location.href = 'kontakt.html';
+            });
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.remove('opacity-0', 'invisible');
+                    backToTopButton.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopButton.classList.remove('opacity-100', 'visible');
+                    backToTopButton.classList.add('opacity-0', 'invisible');
+                }
+            });
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+    <script src="script.js" defer></script>
+</body>
+</html>
