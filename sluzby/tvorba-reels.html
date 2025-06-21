@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportCreative - Digitální Marketing pro Sport</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/esm/ionicons.min.js"></script>
+    <!-- Custom JS will be included here -->
+    <script src="../script.js" defer></script>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="../logo.ico" type="image/x-icon">
+    <meta name="description" content="SportCreative - Profesionální digitální marketing pro sportovní týmy a organizace. Specializujeme se na video editing, správu sociálních.">
+    <meta name="keywords" content="sport, marketing, video editing, sociální sítě, webdesign, fotografie, grafický design, digitální marketing"></meta>
+    <meta name="author" content="SportCreative"></meta>
+    <meta property="og:title" content="SportCreative - Digitální Marketing pro Sport">
+    <meta property="og:description" content="SportCreative - Profesionální digitální marketing pro sportovní týmy a organizace. Specializujeme se na video editing, správu sociálních sítí, webdesign a další služby.">
+    <!-- Add Montserrat font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sport-purple': '#6c38d9',
+                        'sport-orange': '#ff9933',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Add to your Tailwind config -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'sport-purple': {
+              DEFAULT: '#6c38d9',
+              light: '#8a5ad1',
+              dark: '#5a2cbf'
+            },
+            'sport-orange': {
+              DEFAULT: '#ff9933',
+              light: '#ffb366',
+              dark: '#e6892d'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' }
+            },
+            glow: {
+              'from': { boxShadow: '0 0 5px rgba(255, 153, 51, 0.5)' },
+              'to': { boxShadow: '0 0 15px rgba(255, 153, 51, 0.9)' }
+            }
+          },
+          borderRadius: {
+            '4xl': '2rem',
+          },
+          spacing: {
+            '72': '18rem',
+            '84': '21rem',
+          }
+        }
+      }
+    }
+    </script>
+</head>
+<body class="font-sans antialiased">
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="../index.html" class="logo">
+                        <img src="../header-logo.png" alt="SportCreative" class="logo">
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="../index.html" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">Domů</a>
+                    <a href="../sluzby.html" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">Služby</a>
+                    <a href="../portfolio.html" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">Portfolio</a>
+                    <a href="../o-nas.html" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">O nás</a>
+                    <a href="../kontakt.html" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">Kontakt</a>
+                </nav>
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="../kontakt.html" class="bg-sport-purple text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition duration-300">
+                        Nezávazná konzultace
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button type="button" class="mobile-menu-button text-gray-700 hover:text-sport-purple focus:outline-none p-2" aria-label="Menu" aria-expanded="false">
+                        <ion-icon name="menu-outline" class="h-8 w-8 transition-transform duration-300"></ion-icon>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div class="mobile-menu w-full absolute top-full left-0 bg-white shadow-lg">
+                <nav class="px-2 pt-2 pb-4 space-y-1">
+                    <a href="../index.html" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">Domů</a>
+                    <a href="../sluzby.html" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">Služby</a>
+                    <a href="../portfolio.html" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">Portfolio</a>
+                    <a href="../o-nas.html" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">O nás</a>
+                    <a href="../kontakt.html" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">Kontakt</a>
+                </nav>
+                <div class="px-4 py-3 border-t border-gray-100">
+                    <a href="../kontakt.html" class="block w-full text-center px-6 py-3 border border-transparent rounded-full text-base font-medium text-white bg-sport-purple hover:bg-sport-orange transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+                        Nezávazná konzultace
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Banner -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-800">Tvorba Reels</h1>
+            <p class="text-xl max-w-3xl mx-auto mb-8 text-gray-600">Atraktivní krátká videa pro Instagram a Facebook Reels, která zachytí klíčové momenty a zvýší váš dosah. Virální potenciál pro oslovení nových fanoušků.</p>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="py-16 bg-gray-50" style="padding: 4rem;">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Co nabízíme</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-sport-purple text-white w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <ion-icon name="videocam-outline" class="text-2xl"></ion-icon>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-center">Kreativní scénáře a střih</h3>
+                    <p class="text-gray-600 text-center">Návrh poutavých scénářů a profesionální střih, který zaujme vaše publikum.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-sport-orange text-white w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <ion-icon name="trending-up-outline" class="text-2xl"></ion-icon>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-center">Optimalizace pro maximální dosah</h3>
+                    <p class="text-gray-600 text-center">Optimalizace obsahu pro algoritmy sociálních sítí a maximální viditelnost.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="bg-sport-purple text-white w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto">
+                        <ion-icon name="analytics-outline" class="text-2xl"></ion-icon>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 text-center">Analýza úspěšnosti</h3>
+                    <p class="text-gray-600 text-center">Pravidelná analýza výkonu a doporučení pro zlepšení dosahu a angažovanosti.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Showcase -->
+    <section class="py-16" style="padding: 4rem;">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Naše práce</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Reels Example 1 -->
+                <div class="bg-gray-200 rounded-lg overflow-hidden aspect-[9/16] max-w-[300px] mx-auto w-full">
+                    <div class="w-full h-full flex items-center justify-center bg-black">
+                        <video class="w-full h-full object-cover" src="https://v58.tiktokcdn-eu.com/video/tos/no1a/tos-no1a-ve-0068-no/oEUIVLDrIGQ6knEVCALZAp6YQeanfZLIcfIKvg/?a=1233&bti=NDU3ZjAwOg%3D%3D&ch=0&cr=3&dr=0&lr=tiktok&cd=0%7C0%7C0%7C&cv=1&br=1576&bt=788&cs=0&ds=3&ft=bYeKAmcdPD12Nr458h-UxD42hY3W3wv25QcAp&mime_type=video_mp4&qs=0&rc=ZzQ3ODo3aGQ2OWUzZTQ8NEBpM2dodW85cmZxNDMzbzgzNUBjNTBfYWM0XjAxMS1iYzMuYSMvbDNjMmRzaTFhLS1kLzFzcw%3D%3D&vvpl=1&l=20250621221618D860B6743BD489D67813&VExpiration=1750601837&VSignature=Skir_PXGsi9a6BnTRpvrpw&btag=e00088000" controls muted loop autoplay playsinline></video>
+                    </div>
+                </div>
+                <!-- Reels Example 2 -->
+                <div class="bg-gray-200 rounded-lg overflow-hidden aspect-[9/16] max-w-[300px] mx-auto w-full">
+                    <div class="w-full h-full flex items-center justify-center bg-black">
+                        <video class="w-full h-full object-cover" src="https://v77.tiktokcdn-eu.com/4a5024f5b0a6065a85a2b998020f0838/685811f2/video/tos/useast2a/tos-useast2a-ve-0068c001-euttp/oMGrnSEeQDutTleyEYeEVugQDfA9FGgl5E4PhI/?a=1233&bti=NDU3ZjAwOg%3D%3D&ch=0&cr=3&dr=0&lr=tiktok&cd=0%7C0%7C0%7C&cv=1&br=1366&bt=683&cs=0&ds=3&ft=b84FGmm_PD12N.k28h-UxD42hY3W3wv25QcAp&mime_type=video_mp4&qs=0&rc=aDc4NTlmMzw3Ojc4MzU1OEBpamw0bW05cjRqeDMzZjgzM0BhXmAvYjQ1Ni8xL2AzYGFiYSNlbS5vMmQ0c2ZgLS1kL2Nzcw%3D%3D&vvpl=1&l=20250621222323F98F517A624FBCD70234&btag=e000b8000" controls muted loop autoplay playsinline></video>
+                    </div>
+                </div>
+                <!-- Reels Example 3 -->
+                <div class="bg-gray-200 rounded-lg overflow-hidden aspect-[9/16] max-w-[300px] mx-auto w-full">
+                    <div class="w-full h-full flex items-center justify-center bg-black">
+                        <video class="w-full h-full object-cover" src="https://scontent-prg1-1.cdninstagram.com/o1/v/t16/f2/m86/AQPi3Zq-dmCzEHwCvrbAxXviQwQfpnQ3YGtFIEQ_Ko6baDYKvW5eDB8zW1pekquw7Efm1t_vbV5col7cXG-izMuXJErsdCBnhKBi31s.mp4?stp=dst-mp4&efg=eyJxZV9ncm91cHMiOiJbXCJpZ193ZWJfZGVsaXZlcnlfdnRzX290ZlwiXSIsInZlbmNvZGVfdGFnIjoidnRzX3ZvZF91cmxnZW4uY2xpcHMuYzIuNzIwLmJhc2VsaW5lIn0&_nc_cat=102&vs=1234616278391167_43930922&_nc_vs=HBksFQIYUmlnX3hwdl9yZWVsc19wZXJtYW5lbnRfc3JfcHJvZC9CODQyOEMxNUJBQTM5Nzk0REIzMzA5MkQwRDU3RjVBNV92aWRlb19kYXNoaW5pdC5tcDQVAALIARIAFQIYOnBhc3N0aHJvdWdoX2V2ZXJzdG9yZS9HQURoc0IzRHJQWVZmaTREQUhYUGphOVNvbEotYnFfRUFBQUYVAgLIARIAKAAYABsAFQAAJrz60fCr%2FNo%2FFQIoAkMzLBdAUhKfvnbItBgSZGFzaF9iYXNlbGluZV8xX3YxEQB1%2Fgdl5p0BAA%3D%3D&_nc_rid=6a3b095d97&ccb=9-4&oh=00_AfMQqN09f_qVp_DfdM1qW2xiOE6an8SV8FUAoIxd0MQQAA&oe=6858896B&_nc_sid=10d13b" controls muted loop autoplay playsinline></video>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="../kontakt.html" class="bg-sport-purple text-white px-8 py-3 rounded-full font-medium hover:bg-sport-orange transition duration-300 inline-block">
+                    Chci konzultaci
+                </a>
+            </div>
+        </div>
+    </section>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white">
+    <!-- Main Footer -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Column 1: Logo & About -->
+            <div>
+                <div class="text-2xl font-bold mb-4">
+                    <span class="text-sport-purple">Sport</span><span class="text-sport-orange">Creative</span>
+                </div>
+                <p class="text-gray-400 mb-4">
+                    Digitální marketingová agentura specializovaná na sportovní týmy a organizace. Tvoříme obsah, který inspiruje a spojuje fanoušky.
+                </p>
+                <div class="flex space-x-4">
+                    <!-- <a href="#" class="text-gray-400 hover:text-white transition duration-150">
+                        <ion-icon name="logo-facebook" class="text-xl"></ion-icon>
+                    </a> -->
+                    <a href="https://www.instagram.com/sportcreative_cz/" target="_blank" class="text-gray-400 hover:text-white transition duration-150">
+                        <ion-icon name="logo-instagram" class="text-xl"></ion-icon>
+                    </a>
+                    <!-- <a href="#" class="text-gray-400 hover:text-white transition duration-150">
+                        <ion-icon name="logo-twitter" class="text-xl"></ion-icon>
+                    </a> -->
+                    <a href="https://www.linkedin.com/company/sportcreative-eu" target="_blank" class="text-gray-400 hover:text-white transition duration-150">
+                        <ion-icon name="logo-linkedin" class="text-xl"></ion-icon>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Column 2: Services -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-white">Služby</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="video-editing.html" class="text-gray-400 hover:text-white transition duration-150">Video Editing</a>
+                    </li>
+                    <li>
+                        <a href="sociální-sítě.html" class="text-gray-400 hover:text-white transition duration-150">Sociální sítě</a>
+                    </li>
+                    <li>
+                        <a href="tvorba-reels.html" class="text-gray-400 hover:text-white transition duration-150">Tvorba Reels</a>
+                    </li>
+                    <li>
+                        <a href="fotografie-video.html" class="text-gray-400 hover:text-white transition duration-150">Profi Fotografie & Video</a>
+                    </li>
+                    <li>
+                        <a href="web.html" class="text-gray-400 hover:text-white transition duration-150">Správa Webu</a>
+                    </li>
+                    <li>
+                        <a href="design.html" class="text-gray-400 hover:text-white transition duration-150">Grafický Design</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Column 3: Quick Links -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-white">Rychlé odkazy</h3>
+                <ul class="space-y-2">
+                    <li>
+                        <a href="../index.html" class="text-gray-400 hover:text-white transition duration-150">Domů</a>
+                    </li>
+                    <li>
+                        <a href="../o-nas.html" class="text-gray-400 hover:text-white transition duration-150">O nás</a>
+                    </li>
+                    <li>
+                        <a href="../portfolio.html" class="text-gray-400 hover:text-white transition duration-150">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="../kariéra.html" class="text-gray-400 hover:text-white transition duration-150">Kariéra</a>
+                    </li>
+                    <li>
+                        <a href="../kontakt.html" class="text-gray-400 hover:text-white transition duration-150">Kontakt</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Column 4: Contact Info -->
+            <div>
+                <h3 class="text-lg font-semibold mb-4 text-white">Kontakt</h3>
+                <ul class="space-y-3">
+                    <!-- <li class="flex items-start">
+                        <ion-icon name="location-outline" class="text-sport-orange text-xl mt-1 mr-2"></ion-icon>
+                        <span class="text-gray-400">Sportovní 123, 150 00 Praha 5</span>
+                    </li> -->
+                    <li class="flex items-start">
+                        <ion-icon name="call-outline" class="text-sport-orange text-xl mt-1 mr-2"></ion-icon>
+                        <div>
+                            <div class="text-gray-400">+420 775 247 633</div>
+                            <div class="text-gray-400">+420 778 701 838</div>
+                        </div>
+                    </li>
+                    <li class="flex items-center">
+                        <ion-icon name="mail-outline" class="text-sport-orange text-xl mr-2 mt-1"></ion-icon>
+                        <div>
+                            <div class="text-gray-400 cursor-pointer hover:text-white transition-colors" onclick="copyEmailAndRedirect('info@sportcreative.eu')">info@sportcreative.eu</div>
+                            <div class="text-sm text-sport-orange">Odpovídáme do 24 hodin</div>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <ion-icon name="time-outline" class="text-sport-orange text-xl mt-1 mr-2"></ion-icon>
+                        <span class="text-gray-400">Po-Ne: 8:00 - 20:00</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Copyright -->
+    <div class="border-t border-gray-800 py-6">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                &copy; 2025 SportCreative. Všechna práva vyhrazena.
+            </p>
+            <div class="flex space-x-4 text-sm text-gray-400">
+                <a href="../obchodni-podminky.html" class="hover:text-white transition duration-150">Podmínky použití</a>
+                <a href="../gdpr.html" class="hover:text-white transition duration-150">Ochrana soukromí</a>
+                <a href="../cookies.html" class="hover:text-white transition duration-150">Cookies</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="fixed bottom-6 right-6 bg-sport-orange rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-sport-purple hover:scale-110" id="backToTop">
+    <ion-icon name="arrow-up-outline"></ion-icon>
+</button>
+
+<!-- Ionicons Script - Placed at the end for performance -->
+<script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
+
+<!-- Simple JavaScript for Back to Top functionality -->
+<script>
+    // Copy email to clipboard and redirect to contact page
+    function copyEmailAndRedirect(email) {
+        // Copy email to clipboard
+        navigator.clipboard.writeText(email).then(function() {
+            // Show copied tooltip or feedback if needed
+            console.log('Email zkopírován do schránky');
+            
+            // Redirect to contact page
+            window.location.href = '../kontakt.html';
+        }).catch(function(err) {
+            console.error('Nepodařilo se zkopírovat email: ', err);
+            // Still redirect even if copy fails
+            window.location.href = '../kontakt.html';
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+<script src="../script.js" defer></script>
+<!-- CookieConsent CSS (optional, for better styling) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+
+<!-- CookieConsent JS -->
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+
+<script>
+  window.addEventListener("load", function(){
+    window.cookieconsent.initialise({
+      palette: {
+        popup: { background: "#000" },
+        button: { background: "#f1d600", text: "#000" }
+      },
+      theme: "classic",
+      type: "info", // Just informs, doesn't block cookies
+      content: {
+        message: "Tento web používá pouze nezbytné cookies pro správné fungování.",
+        dismiss: "Rozumím",
+        link: "Zásady ochrany osobních údajů",
+        href: "../gdpr.html" // You can create this page if you want
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

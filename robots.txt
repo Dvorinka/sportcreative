@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /includes/
+Disallow: /tmp/
+Disallow: /private/
+
+Sitemap: https://sportcreative.cz/sitemap.xml
+
+# Crawl-delay: 10
+# Uncomment the above line if your server is getting too many requests
+
+# Allow all bots to crawl all assets
+User-agent: *
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.gif$
+Allow: /*.svg$
+Allow: /*.webp$
+
+# Set the preferred domain
+User-agent: *
+Host: https://sportcreative.cz
