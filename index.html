@@ -13,11 +13,21 @@
     <link rel="alternate" hreflang="cs" href="https://sportcreative.cz/" />
     <link rel="alternate" hreflang="x-default" href="https://sportcreative.cz/" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/esm/ionicons.min.js"></script>
-    <!-- Custom JS will be included here -->
+    <!-- Load scripts with defer -->
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <!-- Preload critical resources -->
+    <link rel="preload" href="assets/images/sportcreative.png" as="image">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://unpkg.com">
+    
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
     <link rel="icon" href="logo.ico" type="image/x-icon">
+    
+    <!-- Load non-critical CSS asynchronously -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/esm/ionicons.min.js" as="script">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" media="print" onload="this.media='all'">
     <meta name="description" content="SportCreative - Profesionální digitální marketing pro sportovní kluby v Uherském Hradišti a Zlínském kraji. Specializujeme se na správu sociálních sítí, tvorbu videí, webdesign a online propagaci sportovních týmů.">
     <meta name="keywords" content="digitální marketing Uherské Hradiště, správa sociálních sítí, sportovní marketing, tvorba videí pro sport, webdesign pro sportovní kluby, online propagace sportu, Zlínský kraj, fotbalový marketing, sportovní fotografie, grafický design">
     <meta name="author" content="SportCreative">
@@ -565,14 +575,23 @@
                     </div>
                 </div>
                 <div class="md:w-1/2">
-                    <img src="assets/images/sportcreative.png" alt="Sportovní marketing" class="rounded-lg shadow-xl" />
+                    <img 
+                        src="assets/images/sportcreative.png" 
+                        srcset="assets/images/sportcreative.webp 1x, assets/images/sportcreative2x.webp 2x"
+                        alt="Sportovní marketing" 
+                        class="rounded-lg shadow-xl w-full h-auto"
+                        width="800"
+                        height="600"
+                        loading="eager"
+                        fetchpriority="high"
+                    />
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Initialize Swiper -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- Initialize Swiper - Loaded with defer -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const swiper = new Swiper('.services-slider', {
