@@ -179,6 +179,18 @@ p {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Ensure mobile menu button text is white and add hover state */
+.mobile-menu .bg-sport-purple {
+  color: white !important;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mobile-menu .bg-sport-purple:hover {
+  background-color: #ff9933 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 @keyframes slideDown {
   from {
     opacity: 0;
