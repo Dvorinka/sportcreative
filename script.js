@@ -123,95 +123,92 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Portfolio filtering functionality - only run if elements exist
     const filterButtons = document.querySelectorAll('.portfolio-filter-btn');
-    const allPortfolioItems = document.querySelectorAll('.portfolio-item');
+    let allPortfolioItems = Array.from(document.querySelectorAll('.portfolio-item'));
+
+    // Function to update portfolio items
+    function updatePortfolioItems() {
+        allPortfolioItems = Array.from(document.querySelectorAll('.portfolio-item'));
+    }
 
     // Only run portfolio filtering if we have both buttons and items
     if (filterButtons.length > 0 && allPortfolioItems.length > 0) {
-        // Filter functionality
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Remove active classes from all buttons
-                filterButtons.forEach(btn => {
-                    btn.classList.remove('bg-sport-purple', 'bg-sport-orange', 'text-white');
-                    btn.classList.add('bg-white', 'text-gray-700');
-                });
-                
-                // Add appropriate active class based on button type
-                if (this.getAttribute('data-filter') === 'all') {
-                    this.classList.remove('bg-white', 'text-gray-700');
-                    this.classList.add('bg-sport-purple', 'text-white');
-                } else {
-                    this.classList.remove('bg-white', 'text-gray-700');
-                    this.classList.add('bg-sport-orange', 'text-white');
-                }
-                
-                const filterValue = this.getAttribute('data-filter');
-                
-                // Filter portfolio items
-                portfolioItems.forEach(item => {
-                    const categories = item.getAttribute('data-categories').split(' ');
-                    
-                    if (filterValue === 'all' || categories.includes(filterValue)) {
-                        item.style.display = 'block';
-                        // Add animation class
-                        item.classList.add('animate-fade-in');
-                        setTimeout(() => {
-                            item.classList.remove('animate-fade-in');
-                        }, 500);
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-        
-        // Initialize portfolio with "all" selected and set initial button colors
-        filterButtons.forEach(btn => {
-            if (btn.getAttribute('data-filter') === 'all') {
-                btn.classList.remove('bg-white', 'text-gray-700');
-                btn.classList.add('bg-sport-purple', 'text-white');
-            } else {
-                btn.classList.remove('bg-sport-orange', 'text-white');
-                btn.classList.add('bg-white', 'text-gray-700');
-            }
-        });
-        
-        // Show all items initially
-        portfolioItems.forEach(item => {
-            item.style.display = 'block';
-        });
-        
-        // Portfolio item hover effects - using CSS for hover instead
-        // This ensures hover works regardless of filter state
-        portfolioItems.forEach(item => {
-            // Remove any existing mouseenter/mouseleave event listeners
-            const newItem = item.cloneNode(true);
-            item.parentNode.replaceChild(newItem, item);
-            
-            // Add click handler for each portfolio item
-            newItem.addEventListener('click', function(e) {
+        // Add click handler for each portfolio item
+        function setupPortfolioItemClick(item) {
+            item.addEventListener('click', function(e) {
                 // Prevent the click from bubbling up to parent elements
                 e.stopPropagation();
                 
                 // Toggle a class to handle the overlay visibility on click
                 const overlay = this.querySelector('.portfolio-overlay');
                 if (overlay) {
-                    overlay.classList.toggle('opacity-0');
-                    overlay.classList.toggle('opacity-100');
+                    const isOpening = overlay.classList.contains('opacity-0');
                     
-                    // Close other open overlays
-                    portfolioItems.forEach(otherItem => {
-                        if (otherItem !== this) {
-                            const otherOverlay = otherItem.querySelector('.portfolio-overlay');
-                            if (otherOverlay) {
-                                otherOverlay.classList.add('opacity-0');
-                                otherOverlay.classList.remove('opacity-100');
-                            }
-                        }
+                    // Close all overlays first
+                    document.querySelectorAll('.portfolio-overlay').forEach(ov => {
+                        ov.classList.add('opacity-0');
+                        ov.classList.remove('opacity-100');
                     });
+                    
+                    // Toggle the clicked one if it was closed
+                    if (isOpening) {
+                        overlay.classList.remove('opacity-0');
+                        overlay.classList.add('opacity-100');
+                    }
                 }
             });
+        }
+
+
+        // Initialize portfolio items
+        allPortfolioItems.forEach(item => {
+            setupPortfolioItemClick(item);
         });
+
+        // Filter functionality
+        function filterPortfolio(filterValue) {
+            allPortfolioItems = Array.from(document.querySelectorAll('.portfolio-item'));
+            
+            allPortfolioItems.forEach(item => {
+                const categories = item.getAttribute('data-categories').split(' ');
+                
+                if (filterValue === 'all' || categories.some(cat => cat === filterValue)) {
+                    item.style.display = 'block';
+                    item.classList.add('animate-fade-in');
+                    setTimeout(() => {
+                        item.classList.remove('animate-fade-in');
+                    }, 500);
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Add click handlers to filter buttons
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active button styles
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-sport-purple', 'bg-sport-orange', 'text-white');
+                    btn.classList.add('bg-white', 'text-gray-700');
+                });
+                
+                if (this.getAttribute('data-filter') === 'all') {
+                    this.classList.add('bg-sport-purple', 'text-white');
+                } else {
+                    this.classList.add('bg-sport-orange', 'text-white');
+                }
+                
+                // Apply the filter
+                const filterValue = this.getAttribute('data-filter');
+                filterPortfolio(filterValue);
+            });
+        });
+        
+        // Initialize with 'all' filter
+        const allButton = document.querySelector('.portfolio-filter-btn[data-filter="all"]');
+        if (allButton) {
+            allButton.click();
+        }
     }
 
 
