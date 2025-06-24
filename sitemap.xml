@@ -7,28 +7,67 @@
     <!-- Main Pages -->
     <url>
         <loc>https://sportcreative.cz/</loc>
-        <lastmod>2024-06-21</lastmod>
+        <lastmod>2024-06-24</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
+    <!-- Services -->
     <url>
         <loc>https://sportcreative.cz/sluzby.html</loc>
-        <lastmod>2024-06-21</lastmod>
+        <lastmod>2024-06-24</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://sportcreative.cz/portfolio.html</loc>
-        <lastmod>2024-06-21</lastmod>
+        <loc>https://sportcreative.cz/sluzby/web.html</loc>
+        <lastmod>2024-06-24</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
+        <loc>https://sportcreative.cz/sluzby/design.html</loc>
+        <lastmod>2024-06-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://sportcreative.cz/sluzby/tvorba-reels.html</loc>
+        <lastmod>2024-06-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://sportcreative.cz/sluzby/fotografie-video.html</loc>
+        <lastmod>2024-06-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Portfolio -->
+    <url>
+        <loc>https://sportcreative.cz/portfolio.html</loc>
+        <lastmod>2024-06-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- FAQ Page -->
+    <url>
+        <loc>https://sportcreative.cz/faq.html</loc>
+        <lastmod>2024-06-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <!-- Contact -->
+    <url>
         <loc>https://sportcreative.cz/kontakt.html</loc>
-        <lastmod>2024-06-21</lastmod>
+        <lastmod>2024-06-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -36,34 +75,24 @@
     <!-- Legal Pages -->
     <url>
         <loc>https://sportcreative.cz/gdpr.html</loc>
-        <lastmod>2024-06-21</lastmod>
+        <lastmod>2024-06-24</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     
     <url>
         <loc>https://sportcreative.cz/cookies.html</loc>
-        <lastmod>2024-06-21</lastmod>
+        <lastmod>2024-06-24</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     
-    <!-- FAQ Page -->
+    <!-- Error Page -->
     <url>
-        <loc>https://sportcreative.cz/faq.html</loc>
-        <lastmod>2024-06-21</lastmod>
+        <loc>https://sportcreative.cz/404.html</loc>
+        <lastmod>2024-06-24</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
+        <priority>0.1</priority>
     </url>
-    
-    <!-- Blog Section (uncomment when you have a blog) -->
-    <!--
-    <url>
-        <loc>https://sportcreative.cz/blog/</loc>
-        <lastmod>2024-06-21</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    -->
     
 </urlset>
