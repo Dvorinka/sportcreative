@@ -957,6 +957,48 @@
       cookieConsent.classList.add('hidden');
     });
   });
+
+  // Contact form submission
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.innerHTML;
+      
+      try {
+        // Show loading state
+        submitButton.disabled = true;
+        submitButton.innerHTML = 'Odesílám...';
+        
+        const data = Object.fromEntries(new FormData(form));
+        
+        const res = await fetch('https://sendmail.tdvorak.dev/send', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        
+        const text = await res.text();
+        
+        if (res.ok) {
+          // Show success message
+          alert('Děkujeme za vaši zprávu! Brzy se vám ozveme zpět.');
+          form.reset();
+        } else {
+          throw new Error(text || 'Něco se pokazilo. Zkuste to prosím znovu.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        alert(error.message || 'Při odesílání zprávy došlo k chybě. Zkuste to prosím znovu později.');
+      } finally {
+        // Reset button state
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonText;
+      }
+    });
+  }
 </script>
 
 </body>
