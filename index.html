@@ -892,6 +892,31 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Service Card 7 - Plán rozvoje sportu pro města a obce -->
+                        <div class="swiper-slide">
+                            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 h-full flex flex-col">
+                                <div class="h-48 bg-gradient-to-br from-sport-purple to-sport-purple-dark relative overflow-hidden flex items-center justify-center">
+                                    <div class="bg-white/20 backdrop-blur-sm rounded-full w-24 h-24 flex items-center justify-center">
+                                        <ion-icon name="business-outline" class="text-white text-6xl"></ion-icon>
+                                    </div>
+                                    <div class="absolute inset-0 bg-cover opacity-30" style="background-image: url('assets/images/overlay.png');"></div>
+                                </div>
+                                <div class="p-6 flex-grow flex flex-col">
+                                    <div class="flex items-center mb-4">
+                                        <ion-icon name="business-outline" class="text-sport-purple text-2xl"></ion-icon>
+                                        <h3 class="ml-2 text-xl font-semibold text-gray-900">Plán rozvoje sportu</h3>
+                                    </div>
+                                    <p class="text-gray-600 flex-grow">
+                                        Pomáháme městům a obcím vytvářet strategické dokumenty pro rozvoj sportu. Zmapujeme stav, navrhneme řešení, pomůžeme s dotacemi.
+                                    </p>
+                                    <a href="sluzby/mesta-obce.html" class="mt-4 inline-flex items-center text-sport-purple hover:text-sport-orange font-medium">
+                                        Více informací
+                                        <ion-icon name="arrow-forward-outline" class="ml-1"></ion-icon>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
@@ -1320,7 +1345,7 @@
     <div class="border-t border-gray-800 py-6">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <p class="text-gray-400 text-sm mb-4 md:mb-0">
-                &copy; 2025 SportCreative. Všechna práva vyhrazena.
+                &copy; <span id="currentYear"></span> SportCreative. Všechna práva vyhrazena.
             </p>
             <div class="flex space-x-4 text-sm text-gray-400">
                 <a href="obchodni-podminky.html" class="hover:text-white transition duration-150">Podmínky použití</a>
@@ -1358,6 +1383,9 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
         const backToTopButton = document.getElementById('backToTop');
         
         window.addEventListener('scroll', function() {

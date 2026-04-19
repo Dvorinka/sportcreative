@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Naše Portfolio | SportCreative</title>
     <meta name="description" content="Prohlédněte si naše reference a úspěšné projekty v oblasti digitálního marketingu pro sportovní kluby a organizace.">
+    <link rel="canonical" href="https://sportcreative.cz/portfolio.html" />
+    <link rel="alternate" hreflang="cs" href="https://sportcreative.cz/portfolio.html" />
+    <link rel="alternate" hreflang="x-default" href="https://sportcreative.cz/portfolio.html" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/esm/ionicons.min.js"></script>
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css"></noscript>
     <link rel="icon" href="logo.ico" type="image/x-icon">
 
     <script
@@ -17,68 +20,208 @@
         defer
     ></script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet"></noscript>
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'sport-purple': '#6c38d9',
-                        'sport-orange': '#ff9933',
+                        'sport-purple': {
+                            DEFAULT: '#6c38d9',
+                            light: '#8a5ad1',
+                            dark: '#5a2cbf'
+                        },
+                        'sport-orange': {
+                            DEFAULT: '#ff9933',
+                            light: '#ffb366',
+                            dark: '#e6892d'
+                        }
                     },
                     fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
                     },
                 }
             }
         }
     </script>
     <style>
+        /* Portfolio item hover and active states - matching index.html */
         .portfolio-item {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            display: block;
         }
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        
+        .portfolio-item .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+            transform: translateY(20px);
+            pointer-events: none;
+            z-index: 2;
         }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .portfolio-item img {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-item .portfolio-overlay h3,
+        .portfolio-item .portfolio-overlay p {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay h3,
+        .portfolio-item:hover .portfolio-overlay p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
         .filter-btn.active {
             background-color: #6c38d9;
             color: white;
         }
+        
+        /* Mobile menu styles */
+        .mobile-menu {
+            transform: translateY(-10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease-out;
+        }
+        .mobile-menu.open {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
     </style>
 </head>
 <body class="font-sans antialiased bg-gray-50">
-    <!-- Header -->
+    <!-- Header Section -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
-                <a href="index.html" class="text-2xl font-bold">
-                    <span class="text-sport-purple">Sport</span><span class="text-sport-orange">Creative</span>
-                </a>
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="logo">
+                        <img src="header-logo.png" alt="SportCreative" class="logo">
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
                 <nav class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-gray-700 hover:text-sport-purple font-medium">Domů</a>
-                    <a href="index.html#sluzby" class="text-gray-700 hover:text-sport-purple font-medium">Služby</a>
-                    <a href="portfolio.html" class="text-sport-purple font-medium">Portfolio</a>
-                    <a href="o-nas.html" class="text-gray-700 hover:text-sport-purple font-medium">O nás</a>
-                    <a href="kontakt.html" class="bg-sport-purple text-white px-4 py-2 rounded-full font-medium hover:bg-sport-purple-dark transition">Kontakt</a>
+                    <a href="index.html" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">Domů</a>
+                    <a href="sluzby.html" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">Služby</a>
+                    <a href="portfolio.html" class="text-sport-purple font-medium transition duration-150">Portfolio</a>
+                    <a href="o-nas.html" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">O nás</a>
+                    <a href="kontakt.html" class="text-gray-700 hover:text-sport-purple font-medium transition duration-150">Kontakt</a>
                 </nav>
-                <button class="md:hidden text-gray-700">
-                    <ion-icon name="menu-outline" class="text-2xl"></ion-icon>
-                </button>
+                
+                <!-- CTA Button -->
+                <div class="hidden md:block">
+                    <a href="kontakt.html" class="bg-sport-purple text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition duration-300">
+                        Nezávazná konzultace
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button type="button" class="mobile-menu-button text-gray-700 hover:text-sport-purple focus:outline-none p-2" aria-label="Menu" aria-expanded="false">
+                        <ion-icon name="menu-outline" class="h-8 w-8 transition-transform duration-300"></ion-icon>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <div class="mobile-menu w-full absolute top-full left-0 bg-white shadow-lg">
+                <nav class="px-2 pt-2 pb-4 space-y-1">
+                    <a href="index.html" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">Domů</a>
+                    <a href="sluzby.html" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">Služby</a>
+                    <a href="portfolio.html" class="block px-4 py-3 text-base font-medium text-sport-purple bg-gray-50 rounded-lg transition-colors duration-200">Portfolio</a>
+                    <a href="o-nas.html" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">O nás</a>
+                    <a href="kontakt.html" class="block px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-sport-purple rounded-lg transition-colors duration-200">Kontakt</a>
+                </nav>
+                <div class="px-4 py-3 border-t border-gray-100">
+                    <a href="kontakt.html" class="block w-full text-center px-6 py-3 border border-transparent rounded-full text-base font-medium text-white bg-sport-purple hover:bg-sport-orange transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">
+                        Nezávazná konzultace
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-sport-purple to-sport-purple-dark text-white py-20">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6">Naše Portfolio</h1>
-            <p class="text-xl md:text-2xl max-w-3xl mx-auto">Prohlédněte si naše nejlepší práce pro sportovní kluby a organizace</p>
+    <!-- Hero Section - Styled like index.html -->
+    <section class="bg-white py-16 px-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-8 md:mb-0" style="margin-right: 80px;">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-4">
+                        Naše <span class="text-sport-purple">portfolio</span> <span class="text-sport-orange">projektů</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8">
+                        Prohlédněte si naše nejlepší práce pro sportovní kluby a organizace. Pomáháme týmům růst v digitálním světě.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="kontakt.html" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-sport-purple hover:shadow-lg transition duration-300">
+                            Nezávazná konzultace
+                        </a>
+                        <a href="#portfolio-grid" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-full shadow-sm text-gray-700 bg-white hover:bg-gray-50 transition duration-300">
+                            Prohlédnout projekty
+                            <ion-icon name="arrow-down-outline" class="ml-2"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img 
+                        src="assets/images/sportcreative.png" 
+                        srcset="assets/images/sportcreative.webp 1x, assets/images/sportcreative2x.webp 2x"
+                        alt="Sportovní marketing portfolio" 
+                        class="rounded-lg shadow-xl w-full h-auto"
+                        width="800"
+                        height="600"
+                        loading="eager"
+                    />
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Portfolio Filter -->
-    <section class="py-12 bg-white">
+    <section id="portfolio-grid" class="py-12 bg-white">
         <div class="container mx-auto px-4">
             <div class="flex flex-wrap justify-center gap-3 mb-12">
                 <button class="filter-btn active px-6 py-2 rounded-full font-medium transition" data-filter="all">Všechny projekty</button>
@@ -92,14 +235,12 @@
             <!-- Portfolio Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <a href="portfolio/winnersport.html" class="portfolio-item block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300" data-categories="social sprava-webu">
+                <a href="portfolio/winnersport.html" class="portfolio-item block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl" data-categories="social sprava-webu">
                     <div class="relative overflow-hidden h-64">
-                        <img src="assets/images/winnersport.png" alt="Winnersport" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div>
-                                <h3 class="text-white text-xl font-bold">Winnersport</h3>
-                                <p class="text-gray-200">Správa sociálních sítí a e-shopu</p>
-                            </div>
+                        <img src="assets/images/winnersport.png" alt="Winnersport" class="w-full h-full object-cover">
+                        <div class="portfolio-overlay">
+                            <h3 class="text-white text-xl font-bold">Winnersport</h3>
+                            <p class="text-gray-200">Správa sociálních sítí a e-shopu</p>
                         </div>
                     </div>
                     <div class="p-6">
@@ -111,14 +252,12 @@
                 </a>
 
                 <!-- Project 2 -->
-                <a href="portfolio/masita.html" class="portfolio-item block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300" data-categories="social">
+                <a href="portfolio/masita.html" class="portfolio-item block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl" data-categories="social">
                     <div class="relative overflow-hidden h-64">
-                        <img src="assets/images/masita.jpg" alt="Masita" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div>
-                                <h3 class="text-white text-xl font-bold">Masita</h3>
-                                <p class="text-gray-200">Kompletní správa sociálních sítí</p>
-                            </div>
+                        <img src="assets/images/masita.jpg" alt="Masita" class="w-full h-full object-cover">
+                        <div class="portfolio-overlay">
+                            <h3 class="text-white text-xl font-bold">Masita</h3>
+                            <p class="text-gray-200">Kompletní správa sociálních sítí</p>
                         </div>
                     </div>
                     <div class="p-6">
@@ -129,14 +268,12 @@
                 </a>
 
                 <!-- Project 3 -->
-                <a href="portfolio/bizoni.html" class="portfolio-item block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300" data-categories="social web sprava-webu foto video">
+                <a href="portfolio/bizoni.html" class="portfolio-item block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl" data-categories="social web sprava-webu foto video">
                     <div class="relative overflow-hidden h-64">
-                        <img src="assets/images/bizoni.jpg" alt="FC Bizoni UH" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div>
-                                <h3 class="text-white text-xl font-bold">FC Bizoni UH</h3>
-                                <p class="text-gray-200">Kompletní digitální marketing</p>
-                            </div>
+                        <img src="assets/images/bizoni.jpg" alt="FC Bizoni UH" class="w-full h-full object-cover">
+                        <div class="portfolio-overlay">
+                            <h3 class="text-white text-xl font-bold">FC Bizoni UH</h3>
+                            <p class="text-gray-200">Kompletní digitální marketing</p>
                         </div>
                     </div>
                     <div class="p-6">
@@ -151,14 +288,12 @@
                 </a>
 
                 <!-- Project 4 -->
-                <a href="portfolio/krnov.html" class="portfolio-item block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300" data-categories="sprava-webu social video">
+                <a href="portfolio/krnov.html" class="portfolio-item block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl" data-categories="sprava-webu social video">
                     <div class="relative overflow-hidden h-64">
-                        <img src="assets/images/krnov.jpg" alt="FK Kofola Krnov" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div>
-                                <h3 class="text-white text-xl font-bold">FK Kofola Krnov</h3>
-                                <p class="text-gray-200">Komplexní digitální marketing</p>
-                            </div>
+                        <img src="assets/images/krnov.jpg" alt="FK Kofola Krnov" class="w-full h-full object-cover">
+                        <div class="portfolio-overlay">
+                            <h3 class="text-white text-xl font-bold">FK Kofola Krnov</h3>
+                            <p class="text-gray-200">Komplexní digitální marketing</p>
                         </div>
                     </div>
                     <div class="p-6">
@@ -171,14 +306,12 @@
                 </a>
 
                 <!-- Project 5 -->
-                <a href="portfolio/penalty.html" class="portfolio-item block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300" data-categories="social">
+                <a href="portfolio/penalty.html" class="portfolio-item block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl" data-categories="social">
                     <div class="relative overflow-hidden h-64">
-                        <img src="assets/images/penalty.jpg" alt="Penalty" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div>
-                                <h3 class="text-white text-xl font-bold">Penalty</h3>
-                                <p class="text-gray-200">Správa sociálních sítí</p>
-                            </div>
+                        <img src="assets/images/penalty.jpg" alt="Penalty" class="w-full h-full object-cover">
+                        <div class="portfolio-overlay">
+                            <h3 class="text-white text-xl font-bold">Penalty</h3>
+                            <p class="text-gray-200">Správa sociálních sítí</p>
                         </div>
                     </div>
                     <div class="p-6">
@@ -189,14 +322,12 @@
                 </a>
 
                 <!-- Project 6 -->
-                <a href="portfolio/zeusport.html" class="portfolio-item block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300" data-categories="web social">
+                <a href="portfolio/zeusport.html" class="portfolio-item block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl" data-categories="web social">
                     <div class="relative overflow-hidden h-64">
-                        <img src="assets/images/zeus.jpg" alt="Zeusport" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                            <div>
-                                <h3 class="text-white text-xl font-bold">Zeusport</h3>
-                                <p class="text-gray-200">Webové stránky a sociální sítě</p>
-                            </div>
+                        <img src="assets/images/zeus.jpg" alt="Zeusport" class="w-full h-full object-cover">
+                        <div class="portfolio-overlay">
+                            <h3 class="text-white text-xl font-bold">Zeusport</h3>
+                            <p class="text-gray-200">Webové stránky a sociální sítě</p>
                         </div>
                     </div>
                     <div class="p-6">
@@ -220,56 +351,142 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
                 <div>
-                    <h3 class="text-xl font-bold mb-4">SportCreative</h3>
-                    <p class="text-gray-400">Profesionální digitální marketing pro sportovní kluby a organizace.</p>
+                    <div class="mb-4">
+                        <img src="footer-logo.png" alt="SportCreative" class="h-10">
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Profesionální digitální marketing pro sportovní kluby a organizace. Pomáháme týmům růst v digitálním světě.
+                    </p>
                 </div>
+                
+                <!-- Quick Links -->
                 <div>
-                    <h4 class="font-semibold mb-4">Navigace</h4>
+                    <h4 class="text-lg font-semibold mb-4">Rychlé odkazy</h4>
                     <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Domů</a></li>
-                        <li><a href="index.html#sluzby" class="text-gray-400 hover:text-white transition">Služby</a></li>
-                        <li><a href="portfolio.html" class="text-gray-400 hover:text-white transition">Portfolio</a></li>
-                        <li><a href="o-nas.html" class="text-gray-400 hover:text-white transition">O nás</a></li>
-                        <li><a href="kontakt.html" class="text-gray-400 hover:text-white transition">Kontakt</a></li>
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition duration-150">Domů</a></li>
+                        <li><a href="sluzby.html" class="text-gray-400 hover:text-white transition duration-150">Služby</a></li>
+                        <li><a href="portfolio.html" class="text-gray-400 hover:text-white transition duration-150">Portfolio</a></li>
+                        <li><a href="o-nas.html" class="text-gray-400 hover:text-white transition duration-150">O nás</a></li>
+                        <li><a href="kontakt.html" class="text-gray-400 hover:text-white transition duration-150">Kontakt</a></li>
                     </ul>
                 </div>
+                
+                <!-- Services -->
                 <div>
-                    <h4 class="font-semibold mb-4">Služby</h4>
+                    <h4 class="text-lg font-semibold mb-4">Služby</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Správa sociálních sítí</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Tvorba webových stránek</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Grafický design</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Fotografování</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Videotvorba</a></li>
+                        <li><a href="sluzby.html" class="text-gray-400 hover:text-white transition duration-150">Správa sociálních sítí</a></li>
+                        <li><a href="sluzby.html" class="text-gray-400 hover:text-white transition duration-150">Tvorba videí</a></li>
+                        <li><a href="sluzby.html" class="text-gray-400 hover:text-white transition duration-150">Webdesign</a></li>
+                        <li><a href="sluzby.html" class="text-gray-400 hover:text-white transition duration-150">Fotografie</a></li>
+                        <li><a href="sluzby.html" class="text-gray-400 hover:text-white transition duration-150">Grafický design</a></li>
                     </ul>
                 </div>
+                
+                <!-- Contact -->
                 <div>
-                    <h4 class="font-semibold mb-4">Kontakt</h4>
-                    <ul class="space-y-2 text-gray-400">
+                    <h4 class="text-lg font-semibold mb-4">Kontakt</h4>
+                    <ul class="space-y-3">
                         <li class="flex items-start">
-                            <ion-icon name="mail-outline" class="mr-2 mt-1"></ion-icon>
-                            <a href="mailto:info@sportcreative.cz" class="hover:text-white transition">info@sportcreative.cz</a>
+                            <ion-icon name="location-outline" class="text-sport-orange text-xl mr-3 mt-0.5 flex-shrink-0"></ion-icon>
+                            <span class="text-gray-400"> Uherské Hradiště<br>Zlínský kraj</span>
+                        </li>
+                        <li class="flex items-center">
+                            <ion-icon name="call-outline" class="text-sport-orange text-xl mr-3 flex-shrink-0"></ion-icon>
+                            <div>
+                                <div class="text-gray-400 cursor-pointer hover:text-white transition-colors" onclick="copyEmailAndRedirect('tel:+420778701838')">+420 778 701 838</div>
+                            </div>
+                        </li>
+                        <li class="flex items-center">
+                            <ion-icon name="mail-outline" class="text-sport-orange text-xl mr-2 mt-1"></ion-icon>
+                            <div>
+                                <div class="text-gray-400 cursor-pointer hover:text-white transition-colors" onclick="copyEmailAndRedirect('info@sportcreative.eu')">info@sportcreative.eu</div>
+                                <div class="text-sm text-sport-orange">Odpovídáme do 24 hodin</div>
+                            </div>
                         </li>
                         <li class="flex items-start">
-                            <ion-icon name="call-outline" class="mr-2 mt-1"></ion-icon>
-                            <a href="tel:+420775247633" class="hover:text-white transition">+420 775 247 633</a>
+                            <ion-icon name="time-outline" class="text-sport-orange text-xl mt-1 mr-2"></ion-icon>
+                            <span class="text-gray-400">Po-Ne: 8:00 - 20:00</span>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 SportCreative. Všechna práva vyhrazena.</p>
+        </div>
+        
+        <!-- Copyright -->
+        <div class="border-t border-gray-800 py-6">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">
+                    &copy; <span id="currentYear"></span> SportCreative. Všechna práva vyhrazena.
+                </p>
+                <div class="flex space-x-4 text-sm text-gray-400">
+                    <a href="obchodni-podminky.html" class="hover:text-white transition duration-150">Podmínky použití</a>
+                    <a href="gdpr.html" class="hover:text-white transition duration-150">Ochrana soukromí</a>
+                    <a href="cookies.html" class="hover:text-white transition duration-150">Cookies</a>
+                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="fixed bottom-6 right-6 bg-sport-orange rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-sport-purple hover:scale-110 p-3 z-50" id="backToTop">
+        <ion-icon name="arrow-up-outline" class="text-white text-xl"></ion-icon>
+    </button>
+
+    <!-- Ionicons Script -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
+
+    <!-- JavaScript -->
     <script>
-        // Portfolio Filtering
+        // Copy email to clipboard and redirect to contact page
+        function copyEmailAndRedirect(email) {
+            navigator.clipboard.writeText(email).then(function() {
+                window.location.href = 'kontakt.html';
+            }).catch(function(err) {
+                window.location.href = 'kontakt.html';
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
+            // Back to Top Button
+            const backToTopButton = document.getElementById('backToTop');
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.remove('opacity-0', 'invisible');
+                    backToTopButton.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopButton.classList.remove('opacity-100', 'visible');
+                    backToTopButton.classList.add('opacity-0', 'invisible');
+                }
+            });
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.querySelector('.mobile-menu-button');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            let isMenuOpen = false;
+
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    isMenuOpen = !isMenuOpen;
+                    if (isMenuOpen) {
+                        mobileMenu.classList.add('open');
+                        mobileMenuButton.setAttribute('aria-expanded', 'true');
+                    } else {
+                        mobileMenu.classList.remove('open');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            // Portfolio Filtering
             const filterButtons = document.querySelectorAll('.filter-btn');
             const portfolioItems = document.querySelectorAll('.portfolio-item');
 
@@ -277,7 +494,6 @@
                 button.addEventListener('click', () => {
                     const filterValue = button.getAttribute('data-filter');
                     
-                    // Update active button
                     filterButtons.forEach(btn => {
                         btn.classList.remove('active', 'bg-sport-purple', 'text-white');
                         btn.classList.add('bg-gray-100', 'hover:bg-gray-200');
@@ -285,21 +501,46 @@
                     button.classList.add('active', 'bg-sport-purple', 'text-white');
                     button.classList.remove('bg-gray-100', 'hover:bg-gray-200');
 
-                    // Filter items
                     portfolioItems.forEach(item => {
                         const categories = item.getAttribute('data-categories').split(' ');
-                        
                         if (filterValue === 'all' || categories.includes(filterValue)) {
                             item.style.display = 'block';
-                            item.classList.add('animate-fade-in');
-                            setTimeout(() => {
-                                item.classList.remove('animate-fade-in');
-                            }, 500);
                         } else {
                             item.style.display = 'none';
                         }
                     });
                 });
+            });
+        });
+    </script>
+
+    <!-- Cookie Consent -->
+    <style>
+        .cookie-consent { position: fixed; left: 0; right: 0; bottom: 0; z-index: 9999; padding: 16px; display: flex; justify-content: center; transition: transform 0.3s ease; }
+        .cookie-consent.hidden { transform: translateY(100%); }
+        .cookie-consent-banner { background: white; border-radius: 15px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); padding: 1.5rem; max-width: 800px; width: 100%; display: flex; align-items: center; gap: 1rem; }
+        .cookie-message { flex: 1; font-size: 1rem; line-height: 1.5; color: #333; }
+        .cookie-link { color: #6c38d9; text-decoration: none; font-weight: 600; margin-left: 0.25rem; }
+        .cookie-link:hover { text-decoration: underline; }
+        .cookie-button { border: none; border-radius: 9999px; padding: 0.6rem 1.75rem; font-weight: 600; font-size: 0.95rem; background: linear-gradient(135deg, #6c38d9 0%, #8a5ad1 100%); color: white; cursor: pointer; transition: all 0.3s; }
+        .cookie-button:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        @media (max-width: 767px) { .cookie-consent-banner { flex-direction: column; text-align: center; } .cookie-button { width: 100%; margin-top: 1rem; } }
+    </style>
+    <div id="cookieConsent" class="cookie-consent hidden">
+        <div class="cookie-consent-banner">
+            <p class="cookie-message">Pro zajištění nejlepšího zážitku používáme cookies. Pokračováním souhlasíte s naším <a href="cookies.html" class="cookie-link" target="_blank">sběrem a používáním dat</a></p>
+            <button id="cookieConsentButton" class="cookie-button">Rozumím</button>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cookieConsent = document.getElementById('cookieConsent');
+            const consentButton = document.getElementById('cookieConsentButton');
+            const consentKey = 'cookieConsentAccepted';
+            if (!localStorage.getItem(consentKey)) cookieConsent.classList.remove('hidden');
+            consentButton.addEventListener('click', function() {
+                localStorage.setItem(consentKey, 'true');
+                cookieConsent.classList.add('hidden');
             });
         });
     </script>
